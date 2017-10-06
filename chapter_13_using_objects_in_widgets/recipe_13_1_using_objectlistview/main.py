@@ -48,7 +48,7 @@ class MainPanel(wx.Panel):
         """
         Update the object list view widget
         """
-        print "updating..."
+        print("updating...")
         product_dict = [{"title":"Core Python Programming", "author":"Wesley Chun",
                          "isbn":"0132269937", "mfg":"Prentice Hall"},
                         {"title":"Python Programming for the Absolute Beginner",

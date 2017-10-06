@@ -1,10 +1,6 @@
 # dark_mode.py
 import wx
-
-try:
-    from ObjectListView import ObjectListView
-except:
-    ObjectListView = False
+from ObjectListView import ObjectListView
 
 
 def getWidgets(parent):
@@ -22,10 +18,10 @@ def getWidgets(parent):
 
 def darkRowFormatter(listctrl, dark=False):
     """
-    Toggles the rows in a ListCtrl or ObjectListView widget. 
+    Toggles the rows in a ListCtrl or ObjectListView widget.
     """
 
-    listItems = [listctrl.GetItem(i) for i 
+    listItems = [listctrl.GetItem(i) for i
                  in range(listctrl.GetItemCount())]
     for index, item in enumerate(listItems):
         if dark:

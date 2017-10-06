@@ -18,8 +18,8 @@ class MyFileDropTarget(wx.FileDropTarget):
         self.window.updateText("\n%d file(s) dropped at %d,%d:\n" %
                                (len(filenames), x, y))
         for filepath in filenames:
-            self.window.updateText(filepath + '\n')    
-        
+            self.window.updateText(filepath + '\n')
+
         return True
 
 
@@ -33,7 +33,7 @@ class DnDPanel(wx.Panel):
         file_drop_target = MyFileDropTarget(self)
         lbl = wx.StaticText(self, label="Drag some files here:")
         self.fileTextCtrl = wx.TextCtrl(self,
-                                        style=wx.TE_MULTILINE|wx.HSCROLL|wx.TE_READONLY)
+                                        style=wx.TE_MULTILINE|wx.HSCROLL)
         self.fileTextCtrl.SetDropTarget(file_drop_target)
 
         sizer = wx.BoxSizer(wx.VERTICAL)

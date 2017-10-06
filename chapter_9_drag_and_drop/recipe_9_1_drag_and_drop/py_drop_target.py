@@ -1,4 +1,4 @@
-import  wx
+import wx
 
 
 class MyURLDropTarget(wx.PyDropTarget):
@@ -32,12 +32,12 @@ class DnDPanel(wx.Panel):
         font = wx.Font(12, wx.SWISS, wx.NORMAL, wx.BOLD, False)
 
         # create and setup first set of widgets
-        lbl = wx.StaticText(self, 
+        lbl = wx.StaticText(self,
                             label="Drag some URLS from your browser here:")
         lbl.SetFont(font)
         self.dropText = wx.TextCtrl(
-            self, size=(200,200), 
-            style=wx.TE_MULTILINE|wx.HSCROLL|wx.TE_READONLY)
+            self, size=(200,200),
+            style=wx.TE_MULTILINE|wx.HSCROLL)
         dt = MyURLDropTarget(self.dropText)
         self.dropText.SetDropTarget(dt)
         firstSizer = self.addWidgetsToSizer([lbl, self.dropText])
@@ -45,7 +45,7 @@ class DnDPanel(wx.Panel):
         # create and setup second set of widgets
         lbl = wx.StaticText(self, label="Drag this URL to your browser:")
         lbl.SetFont(font)
-        self.draggableURLText = wx.TextCtrl(self, 
+        self.draggableURLText = wx.TextCtrl(self,
                                             value="http://www.mousevspython.com")
         self.draggableURLText.Bind(wx.EVT_MOTION, self.OnStartDrag)
         secondSizer = self.addWidgetsToSizer([lbl, self.draggableURLText])
@@ -85,7 +85,7 @@ class DnDFrame(wx.Frame):
 
     def __init__(self):
         """Constructor"""
-        wx.Frame.__init__(self, parent=None, 
+        wx.Frame.__init__(self, parent=None,
                           title="DnD URL Tutorial", size=(800,600))
         panel = DnDPanel(self)
         self.Show()

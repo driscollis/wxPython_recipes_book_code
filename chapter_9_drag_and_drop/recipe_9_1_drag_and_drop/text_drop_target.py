@@ -25,11 +25,12 @@ class DnDPanel(wx.Panel):
 
         lbl = wx.StaticText(self, label="Drag some text here:")
         self.myTextCtrl = wx.TextCtrl(
-            self, style=wx.TE_MULTILINE|wx.HSCROLL|wx.TE_READONLY)
+            self, style=wx.TE_MULTILINE|wx.HSCROLL)
         text_dt = MyTextDropTarget(self.myTextCtrl)
         self.myTextCtrl.SetDropTarget(text_dt)
 
         sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(lbl)
         sizer.Add(self.myTextCtrl, 1, wx.EXPAND)
         self.SetSizer(sizer)
 
