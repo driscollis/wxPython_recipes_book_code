@@ -137,7 +137,7 @@ class MainPanel(wx.Panel):
         """
         Shortens the URL with tinyURL
         """
-        print "in tinyurl"
+        print("in tinyurl")
         URL = tinyurl.create_one(text)
         self.outputURLTxt.SetValue(URL)
 

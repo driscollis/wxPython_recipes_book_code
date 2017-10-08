@@ -36,9 +36,9 @@ class MyPanel(wx.Panel):
         with ContextFileDialog(self, **kwargs) as dlg:
             if dlg.ShowModal() == wx.ID_OK:
                 paths = dlg.GetPaths()
-                print "You chose the following file(s):"
+                print("You chose the following file(s):")
                 for path in paths:
-                    print path
+                    print(path)
 
 
 class MyFrame(wx.Frame):

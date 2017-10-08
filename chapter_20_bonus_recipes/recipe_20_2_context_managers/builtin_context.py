@@ -30,7 +30,7 @@ class MyPanel(wx.Panel):
             if dlg.ShowModal() == wx.ID_OK:
                 data = dlg.GetColourData()
                 color = str(data.GetColour().Get())
-                print 'You selected: %s\n' % color
+                print('You selected: %s\n' % color)
 
     def onOpenBusyInfo(self, event):
         """
