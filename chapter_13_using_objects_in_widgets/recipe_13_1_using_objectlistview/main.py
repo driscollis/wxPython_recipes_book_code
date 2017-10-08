@@ -26,7 +26,8 @@ class MainPanel(wx.Panel):
                               "1933988495", "Manning")
                          ]
 
-        self.dataOlv = ObjectListView(self, wx.ID_ANY, style=wx.LC_REPORT|wx.SUNKEN_BORDER)
+        self.dataOlv = ObjectListView(self, wx.ID_ANY,
+                                      style=wx.LC_REPORT|wx.SUNKEN_BORDER)
         self.setBooks()
 
         # Allow the cell values to be edited when double-clicked
@@ -49,14 +50,15 @@ class MainPanel(wx.Panel):
         Update the object list view widget
         """
         print("updating...")
-        product_dict = [{"title":"Core Python Programming", "author":"Wesley Chun",
-                         "isbn":"0132269937", "mfg":"Prentice Hall"},
-                        {"title":"Python Programming for the Absolute Beginner",
-                         "author":"Michael Dawson", "isbn":"1598631128",
-                         "mfg":"Course Technology"},
-                        {"title":"Learning Python", "author":"Mark Lutz",
-                         "isbn":"0596513984", "mfg":"O'Reilly"}
-                        ]
+        product_dict = [
+            {"title":"Core Python Programming", "author":"Wesley Chun",
+             "isbn":"0132269937", "mfg":"Prentice Hall"},
+            {"title":"Python Programming for the Absolute Beginner",
+             "author":"Michael Dawson", "isbn":"1598631128",
+             "mfg":"Course Technology"},
+            {"title":"Learning Python", "author":"Mark Lutz",
+             "isbn":"0596513984", "mfg":"O'Reilly"}
+            ]
         data = self.products + product_dict
         self.dataOlv.SetObjects(data)
 

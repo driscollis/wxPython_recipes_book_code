@@ -20,7 +20,7 @@ class MyForm(wx.Frame):
 
     def onTakeScreenShot(self, event):
         """
-        Takes a screenshot of the screen at give pos & size (rect).
+        Takes a screenshot of the screen at given pos & size (rect).
 
         Method based on a script by Andrea Gavana
         """
@@ -41,7 +41,6 @@ class MyForm(wx.Frame):
 
         # Create a Bitmap that will hold the screenshot image later on
         # Note that the Bitmap must have a size big enough to hold the screenshot
-        # -1 means using the current default colour depth
         bmp = wx.EmptyBitmap(rect.width, rect.height)
 
         #Create a memory DC that will be used for actually taking the screenshot
