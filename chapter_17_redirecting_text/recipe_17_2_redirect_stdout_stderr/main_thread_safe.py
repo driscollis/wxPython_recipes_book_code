@@ -2,7 +2,7 @@ import sys
 import wx
 
 
-class RedirectText():
+class RedirectText(object):
 
     def __init__(self, my_text_ctrl):
         self.out = my_text_ctrl
