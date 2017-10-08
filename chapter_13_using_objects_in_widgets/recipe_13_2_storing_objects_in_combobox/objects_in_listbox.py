@@ -1,7 +1,7 @@
 import wx
 
 
-class Car:
+class Car(object):
     """"""
 
     def __init__(self, id, model, make, year):
