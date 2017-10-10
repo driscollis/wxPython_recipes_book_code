@@ -14,13 +14,14 @@ class TestThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
+        self.daemon = True
         self.start()    # start the thread
 
     def run(self):
         """Run Worker Thread."""
         # This is the code executing in the new thread.
         for i in range(20):
-            time.sleep(1)
+            time.sleep(0.25)
             wx.CallAfter(pub.sendMessage, "update", msg="")
 
 
@@ -47,6 +48,7 @@ class MyProgressDialog(wx.Dialog):
 
         if self.count >= 20:
             self.Destroy()
+            return
 
         self.progress.SetValue(self.count)
 
@@ -72,7 +74,8 @@ class MyForm(wx.Frame):
         btn = event.GetEventObject()
         btn.Disable()
 
-        TestThread()
+        thread = TestThread()
+
         dlg = MyProgressDialog()
         dlg.ShowModal()
 
