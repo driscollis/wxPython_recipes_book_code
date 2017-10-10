@@ -25,6 +25,7 @@ class TestThread(Thread):
     def __init__(self, wxObject):
         """Init Worker Thread Class."""
         Thread.__init__(self)
+        self.daemon = True
         self.wxObject = wxObject
         self.start()    # start the thread
 

@@ -13,6 +13,7 @@ class TestThread(Thread):
     def __init__(self):
         """Init Worker Thread Class."""
         Thread.__init__(self)
+        self.daemon = True
         self.start()    # start the thread
 
     def run(self):
