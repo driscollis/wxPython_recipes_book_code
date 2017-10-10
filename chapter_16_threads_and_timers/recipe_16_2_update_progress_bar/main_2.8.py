@@ -48,8 +48,7 @@ class MyProgressDialog(wx.Dialog):
         self.count += 1
 
         if self.count >= 20:
-            self.Destroy()
-            return
+            self.EndModal(0)
 
         self.progress.SetValue(self.count)
 
@@ -79,6 +78,7 @@ class MyFrame(wx.Frame):
 
         dlg = MyProgressDialog()
         dlg.ShowModal()
+        dlg.Destroy()
 
         btn.Enable()
 
