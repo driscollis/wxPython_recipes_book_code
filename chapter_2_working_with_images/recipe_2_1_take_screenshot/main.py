@@ -39,31 +39,37 @@ class MyForm(wx.Frame):
         # Create a DC for the whole screen area
         dcScreen = wx.ScreenDC()
 
-        # Create a Bitmap that will hold the screenshot image later on
-        # Note that the Bitmap must have a size big enough to hold the screenshot
-        bmp = wx.EmptyBitmap(rect.width, rect.height)
+        # On Windows and Mac, we can just call GetAsBitmap on the wx.ScreenDC
+        # and it will give us what we want.
+        bmp = dcScreen.GetAsBitmap().GetSubBitmap(rect)
 
-        #Create a memory DC that will be used for actually taking the screenshot
-        memDC = wx.MemoryDC()
+        if not bmp.IsOk():
+            # Create a Bitmap that will hold the screenshot image later on
+            # Note that the Bitmap must have a size big enough to hold the screenshot
+            # -1 means using the current default colour depth
+            bmp = wx.EmptyBitmap(rect.width, rect.height)
 
-        # Tell the memory DC to use our Bitmap
-        # all drawing action on the memory DC will go to the Bitmap now
-        memDC.SelectObject(bmp)
+            #Create a memory DC that will be used for actually taking the screenshot
+            memDC = wx.MemoryDC()
 
-        # Blit (in this case copy) the actual screen on the memory DC
-        # and thus the Bitmap
-        memDC.Blit( 0, # Copy to this X coordinate
-                    0, # Copy to this Y coordinate
-                    rect.width, # Copy this width
-                    rect.height, # Copy this height
-                    dcScreen, # Where to copy from
-                    rect.x, # What's the X offset in the original DC?
-                    rect.y  # What's the Y offset in the original DC?
-                    )
+            # Tell the memory DC to use our Bitmap
+            # all drawing action on the memory DC will go to the Bitmap now
+            memDC.SelectObject(bmp)
 
-        # Select the Bitmap out of the memory DC by selecting a new
-        # uninitialized Bitmap
-        memDC.SelectObject(wx.NullBitmap)
+            # Blit (in this case copy) the actual screen on the memory DC
+            # and thus the Bitmap
+            memDC.Blit( 0, # Copy to this X coordinate
+                        0, # Copy to this Y coordinate
+                        rect.width, # Copy this width
+                        rect.height, # Copy this height
+                        dcScreen, # Where to copy from
+                        rect.x, # What's the X offset in the original DC?
+                        rect.y  # What's the Y offset in the original DC?
+                        )
+
+            # Select the Bitmap out of the memory DC by selecting a new
+            # uninitialized Bitmap
+            memDC.SelectObject(wx.NullBitmap)
 
         img = bmp.ConvertToImage()
         fileName = "myImage.png"

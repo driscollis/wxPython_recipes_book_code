@@ -49,12 +49,12 @@ def darkMode(self, normalPanelColor):
         dark_mode = False
     for widget in widgets:
         if dark_mode:
-            if isinstance(widget, ObjectListView) or isinstance(widget, wx.ListCtrl):
+            if isinstance(widget, wx.ListCtrl) or (ObjectListView and isinstance(widget, ObjectListView)):
                 darkRowFormatter(widget, dark=True)
             widget.SetBackgroundColour("Dark Grey")
             widget.SetForegroundColour("White")
         else:
-            if isinstance(widget, ObjectListView) or isinstance(widget, wx.ListCtrl):
+            if isinstance(widget, wx.ListCtrl) or (ObjectListView and isinstance(widget, ObjectListView)):
                 darkRowFormatter(widget)
                 widget.SetBackgroundColour("White")
                 widget.SetForegroundColour("Black")

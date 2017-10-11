@@ -1,3 +1,4 @@
+import webbrowser
 import wx
 import wx.adv
 import wx.html
@@ -117,8 +118,12 @@ class AboutDlg(wx.Frame):
 
 class wxHTML(wx.html.HtmlWindow):
 
+    def __init__(self, *args, **kwargs):
+        wx.html.HtmlWindow.__init__(self, *args, **kwargs)
+        self.Bind(wx.html.EVT_HTML_LINK_CLICKED, self.OnLinkClicked)
+
     def OnLinkClicked(self, link):
-        webbrowser.open(link.GetHref())
+        webbrowser.open(link.GetLinkInfo().GetHref())
 
 
 # Run the program

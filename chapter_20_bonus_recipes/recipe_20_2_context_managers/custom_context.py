@@ -25,13 +25,21 @@ class MyPanel(wx.Panel):
 
     def onOpenFile(self, event):
         """"""
+        style = 0ß
+        try:
+            # wxPython 3+ syntax
+            style = wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR
+        except AttributeError:
+            # wxPython <= 2.8
+            style = wx.OPEN | wx.MULTIPLE | wx.CHANGE_DIR
+
         wildcard = "Python source (*.py)|*.py|" \
             "All files (*.*)|*.*"
         kwargs = {'message':"Choose a file",
                   'defaultDir':os.path.dirname(os.path.abspath( __file__ )),
                   'defaultFile':"",
                   'wildcard':wildcard,
-                  'style':wx.OPEN | wx.MULTIPLE | wx.CHANGE_DIR
+                  'style':style
                   }
         with ContextFileDialog(self, **kwargs) as dlg:
             if dlg.ShowModal() == wx.ID_OK:
