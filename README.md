@@ -1,5 +1,5 @@
 # wxPython Recipes 
 
-The code in this repository is from my book, wxPython Recipes
+This repository accompanies [*wxPython Recipes*](http://www.apress.com/9781484232361) by Mike Driscoll (Apress, 2018).
 
-More information coming in 4th Quarter of 2017
+Download the files as a zip using the green button, or clone the repository to your machine using Git.
