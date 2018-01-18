@@ -41,7 +41,9 @@ class MyForm(wx.Frame):
 
         # On Windows and Mac, we can just call GetAsBitmap on the wx.ScreenDC
         # and it will give us what we want.
-        bmp = dcScreen.GetAsBitmap().GetSubBitmap(rect)
+        bmp = dcScreen.GetAsBitmap()
+        if bmp.IsOk():
+            bmp = bmp.GetSubBitmap(rect)
 
         if not bmp.IsOk():
             # Create a Bitmap that will hold the screenshot image later on
