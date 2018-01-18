@@ -30,7 +30,7 @@ class MyApp(wx.Frame):
 
         for child in children:
             widget = child.GetWindow()
-            print widget
+            print(widget)
             if isinstance(widget, wx.TextCtrl):
                 widget.Clear()
 
