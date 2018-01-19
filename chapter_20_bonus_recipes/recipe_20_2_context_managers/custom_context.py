@@ -25,7 +25,7 @@ class MyPanel(wx.Panel):
 
     def onOpenFile(self, event):
         """"""
-        style = 0ß
+        style = 0
         try:
             # wxPython 3+ syntax
             style = wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR
