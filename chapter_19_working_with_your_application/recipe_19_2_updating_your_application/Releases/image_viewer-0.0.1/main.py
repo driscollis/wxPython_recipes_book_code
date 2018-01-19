@@ -63,9 +63,9 @@ class PhotoCtrl(wx.App, SoftwareUpdate):
                                style=wx.FD_OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.photoTxt.SetValue(dialog.GetPath())
+            self.onView()
         dialog.Destroy()
-        self.onView()
-
+        
     def onView(self):
         """
         Attempts to load the image and display it
